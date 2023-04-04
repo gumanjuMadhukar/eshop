@@ -1,0 +1,14 @@
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   .form{
+    background: rgb(0 0 0 / 86%);
+    padding: 2rem;
+    border-radius: 20px;
+    color: aliceblue;
+   }
+   
+}

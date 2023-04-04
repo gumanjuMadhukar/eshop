@@ -1,0 +1,15 @@
+.product-details{
+    background-color: #505050;
+
+    .card{
+        background-color: #0a0a0a;
+        color: #fff;
+        img{
+            object-fit: contain;
+            object-position: center;
+             width: 100%;
+             height: 70vh;
+        }
+    }
+   
+}

@@ -1,0 +1,22 @@
+a{
+    text-decoration: none !important;
+    color: antiquewhite ;
+}
+
+.cart{
+    position: relative;
+    img{
+        width: 30px;
+        filter: invert(1);
+    }
+    span{
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        background: aliceblue;
+    }
+}

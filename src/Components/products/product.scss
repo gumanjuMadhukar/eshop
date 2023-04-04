@@ -1,0 +1,34 @@
+.title{
+    color: #fff;
+    padding: 20px;
+}
+.productCard{
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    margin:-10px;
+    .product-container{
+        width: 25%;
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        .card{
+            background-color: transparent;
+            height:600px;
+            img{
+                height: 50%;
+                padding: 10px;
+                object-fit: contain;
+                border-radius: 8px;
+            }
+            .list-group{
+               
+                .list-group-item{
+                    background-color: #000;
+                    color: #fff;
+                }
+            }
+          
+        }
+    }  
+}
