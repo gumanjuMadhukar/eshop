@@ -1,11 +1,11 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import SearchBox from "../Search/searchBox";
+import { useSelector } from "react-redux";
 import './header.css'
 
 const Header = () => {
@@ -15,6 +15,7 @@ const Header = () => {
     { name: "Shop", link: "/about" },
 
   ];
+  const state = useSelector((state)=> state.handleCart)
   return (
     <header className="header">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -43,7 +44,7 @@ const Header = () => {
                 <Button variant="outline-success">Register</Button>{" "}
               </Link>
               <Link to={"/cart"}>
-                <Button variant="outline-info" className="cart"><img src="/shopping-cart-icon.png" alt="cart-icon" /><span>2</span></Button>{" "}
+                <Button variant="outline-info" className="cart"><img src="/shopping-cart-icon.png" alt="cart-icon" /><span>{state.length}</span></Button>{" "}
               </Link>
             </Nav>
           </Navbar.Collapse>

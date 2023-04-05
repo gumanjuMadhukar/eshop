@@ -1,7 +1,5 @@
 import React from "react";
 import { Container} from "react-bootstrap";
-import { Details } from "../Details/details";
-import CardDetails from "../../Components/CardDetails/cardDetails";
 import Products from "../../Components/products/products";
 
 import './home.css'

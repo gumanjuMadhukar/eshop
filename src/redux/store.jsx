@@ -1,6 +1,15 @@
-import { createStore } from "redux";
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducers from "./reducer";
+import  {legacy_createStore as createStore} from 'redux'
 
-const Store = createStore(rootReducers);
 
-export default Store;
+const store = createStore(rootReducers);
+
+
+// const Store = configureStore({
+//   reducer: rootReducers,
+//   middleware: [/* array of middleware */],
+//   devTools: process.env.NODE_ENV !== 'production',
+// });
+
+export default store;

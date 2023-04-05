@@ -3,7 +3,8 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
 import "./product.css";
-
+import {useDispatch} from 'react-redux'
+import { addCart } from "../../redux/action";
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([data]);
@@ -14,6 +15,7 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
+      
       const response = await fetch(`https://fakestoreapi.com/products`);
       if (componentMounted) {
         setData(await response.clone().json());
@@ -28,40 +30,19 @@ const Products = () => {
     getProducts();
   }, []);
 
+  const dispatch = useDispatch();
+  const addProduct =(product) =>{
+    dispatch(addCart(product));
+  }
   const Loading = () => {
     return <>Loading...</>;
   };
   const Product = filter.map((product) => {
     const id = product.id;
-    const cat = product.category;
     return (
       <div className="product-container">
-        {/* <Link to={`${cat}/${id}`}>
-          <div className="card">
-            <Card className="product" key={product.id} style={{}}>
-              <Card.Img
-                variant="top"
-                className="cardImg"
-                src={product.image}
-                alt={product.title}
-              />
-              <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
-                <Card.Text>{product.desc}</Card.Text>
-              </Card.Body>
-              <ListGroup className="list-group">
-                <ListGroup.Item>$ {product.price}</ListGroup.Item>
-                <ListGroup.Item>{product.category}</ListGroup.Item>
-              </ListGroup>
-              <Card.Body>
-                <Card.Link to={"/cart"}>Add to Cart</Card.Link>
-                <Card.Link href="#">Buy Now</Card.Link>
-              </Card.Body>
-            </Card>
-          </div>
-        </Link> */}
-        
         <div className="card">
+        {/* <Card className="product" key={product.id} style={{}}> */}
           <Card className="product" key={product.id} style={{}}>
             <Card.Img
               variant="top"
@@ -78,9 +59,9 @@ const Products = () => {
               <ListGroup.Item>{product.category}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Link >
+              {/* <Link onClick={(addProduct(product))} >
                 Add to Cart
-              </Link>
+              </Link> */}
               <Link to={`/details/${id}`}>Buy Now</Link>
             </Card.Body>
           </Card>

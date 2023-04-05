@@ -4,17 +4,27 @@ import ListGroup from "react-bootstrap/ListGroup";
 import "./details.css";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { addCart } from "../../redux/action";
+import { addCart, delCart } from "../../redux/action";
 
 export const Details = () => {
+  const [cartBtn, setCartBtn] =useState("Add To Cart")
   const [data, setData] = useState([]);
   const [product, setproduct] = useState([data]);
   const [loading, setLoading] = useState([false]);
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const addProduct = (product) => {
-    dispatch(addCart(product));
+
+  const addProduct = (data) => {
+    if(cartBtn === "Add To Cart"){
+      dispatch(addCart(data));
+      setCartBtn("Remove from Cart")
+    }
+    else{
+      dispatch(delCart(data));
+      setCartBtn("Add To Cart")
+    }
+    
   };
 
   let componentMounted = true;
@@ -59,13 +69,13 @@ export const Details = () => {
                   <ListGroup.Item>{data.category}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                  <Link to={"/cart"} href="#">
-                    <button className="btn-outline-light" onCLick={()=>addProduct(product)}>
-                      Add To Cart
+                  <Link>
+                    <button className="btn-outline-light" onClick={()=>addProduct(data)}>
+                      {cartBtn}
                     </button>
                   </Link>
                   <Card.Link to={"/cart"} href="#">
-                    Another Link
+                    See Cart
                   </Card.Link>
                 </Card.Body>
               </div>
